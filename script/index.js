@@ -34,5 +34,19 @@ function createListElement() {
 
         }
     });
+    //revert input value back to nothing
     input.value = "";
+}
+//create item after press
+function addListAfterClick() {
+    if (inputlength() > 0) {
+        createListElement();
+    }
+}
+//create item list after enter
+function addListAfterPress(event) {
+    if (inputLength() > 0 && event.keyCode == 13) {
+        createListElement();
+    }
+
 }
