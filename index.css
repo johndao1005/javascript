@@ -1,0 +1,50 @@
+boday{
+    margin: 0 auto;
+    padding: 10px;
+}
+ul{
+    list-style-type: none;
+}
+h1,
+p{
+    text-align: center;
+}
+
+input {
+    border-radius: 5px;
+    padding: 10px;
+    margin-left: 200px;
+}
+.testingIt {
+    text-decoration-line: line-through;
+}
+.deleteButton {
+color:white;
+background-color: red;
+border-radius: 30px;
+margin: 20px;
+}
+#here li{
+    width: 10w;
+    padding: 20px;
+    border: 1px solid black;
+}
+button{
+    color: white;
+    background: green;
+    padding: 5px;
+    border-radius: 5px;
+}
+body{
+    background: #f9f9f9;
+    background-size: cover ;
+    text-align: center;
+}
+input{
+    border-radius: 5px;
+    padding: 10px;
+    margin-left: 200px;
+}
+.done{
+    text-decoration: line-through red;
+}

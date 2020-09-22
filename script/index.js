@@ -1,52 +1,54 @@
 var button = document.getElementById("enter");
 var input = document.getElementById("input");
-var ul = document.querySelector('ul');
-// take the value of input from html
-function inputLength() {
-    return input.value.lenth;
+var ul = document.querySelector("ul");
 
+function inputLength() {
+	return input.value.length;
 }
 
 function createListElement() {
-    // this function will create items and add delete option
+	var li = document.createElement("li");
+	li.appendChild(document.createTextNode(input.value));
+	ul.appendChild(li);
 
-    var li = document.createElement("li");
-    li.appendChild(document.createTextNode(input.value));
-    ul.appendChild(li);
-    li.addEventListener("click", function() {
-        //check if the item present
-        var finished = this.classList.toogle("done");
-        // create a new element => button
-        var removeButton = document.createElement(button);
-        //create a class name delete button
-        removeButton.classList.add("deleteButton");
+	li.addEventListener("click", function () {
+		// creates a boolean that toggles the done class on li:
+		// if the list item is clicked this toggles the done class
+		var finished = this.classList.toggle("done");
+		// creates a remove button for the finished item:
+		var removeButton = document.createElement("button");
+		removeButton.classList.add("deleteButton");
 
-        //only excute the if function if the statement is true
-        if (finished) {
-            removeButton.appendChild(document.createTextNode("remove"));
-            removeButton.classList = "deleteButton";
-            li.appendChild(removeButton);
-            removeButton.addEventListener("click", function() {
-                this.parentElement.remove();
-            })
-        } else {
-            this.getElementsByClassName("deleteButton")[0].remove();
+		// if the list item is clicked (li add event listener ) then
+		// finished is true
+		if (finished) {
+			removeButton.appendChild(document.createTextNode("remove"));
+			removeButton.classList = "deleteButton";
+			li.appendChild(removeButton);
 
-        }
-    });
-    //revert input value back to nothing
-    input.value = "";
+			removeButton.addEventListener("click", function () {
+				this.parentElement.remove();
+			});
+		} else {
+			this.getElementsByClassName("deleteButton")[0].remove();
+		}
+	});
+	// revert input value back to nothing
+	input.value = "";
 }
-//create item after press
+
 function addListAfterClick() {
-    if (inputlength() > 0) {
-        createListElement();
-    }
+	if (inputLength() > 0) {
+		createListElement();
+	}
 }
-//create item list after enter
-function addListAfterPress(event) {
-    if (inputLength() > 0 && event.keyCode == 13) {
-        createListElement();
-    }
 
+function addListAfterPress(event) {
+	if (inputLength() > 0 && event.keyCode === 13) {
+		createListElement();
+	}
 }
+
+button.addEventListener("click", addListAfterClick);
+
+input.addEventListener("keypress", addListAfterPress);
